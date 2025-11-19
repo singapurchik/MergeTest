@@ -13,8 +13,5 @@ namespace MergeTest.Characters.Grid
 		
 		public bool IsHoldingObject => CurrentHoldableObject != null;
 		
-		public void SetCharacter(IHoldableObject holdableObject) => CurrentHoldableObject = holdableObject;
-
-		public void TakeCharacter() => CurrentHoldableObject.Take();
 	}
 }

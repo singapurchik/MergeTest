@@ -9,6 +9,7 @@ namespace MergeTest.Characters.Grid
 	{
 		[Inject] private IReadOnlyList<CharactersGridTile> _tiles;
 		[Inject] private IPlayerInputInfo _inputInfo;
+		[Inject] private IObjectHolder _objectHolder;
 		
 		public bool IsHasEmptyTile => _emptyTiles.Count > 0;
 		
@@ -34,7 +35,7 @@ namespace MergeTest.Characters.Grid
 			if (hit.transform.TryGetComponent(out CharactersGridTile tile) && tile.IsHoldingObject)
 			{
 				_selectedTile = tile;
-				_selectedTile.TakeCharacter();
+				_objectHolder.Take(_selectedTile.CurrentHoldableObject);
 			}
 		}
 		

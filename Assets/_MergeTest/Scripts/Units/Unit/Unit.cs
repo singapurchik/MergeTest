@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using MergeTest.Core;
 using UnityEngine;
 using Zenject;
 using System;
@@ -8,23 +7,12 @@ namespace MergeTest.Units
 {
 	public class Unit : MonoBehaviour
 	{
-		[Serializable]
-		private struct Costume
-		{
-			[SerializeField] private GameObject _skin;
-			[SerializeField] private Avatar _avatar;
-			
-			public Avatar Avatar => _avatar;
-
-			public bool TryDisable() => _skin.TryDisable();
-			
-			public bool TryEnable() => _skin.TryEnable();
-		}
-		
 		[SerializeField] private UnitType _type;
-		[SerializeField] private List<Costume> _costumes = new ();
+		[SerializeField] private List<UnitCostume> _costumes = new ();
 		[SerializeField] private float _takeScaleMultiplier = 1.5f;
-
+		[Space(5)]
+		[SerializeField] private UnitVisualEffectsPlayer _visualEffectsPlayer;
+		
 		[Inject] private UnitAnimator _animator;
 		
 		public UnitType Type => _type;
@@ -41,6 +29,7 @@ namespace MergeTest.Units
 		private void Awake()
 		{
 			_defaultScale = transform.localScale;
+			_visualEffectsPlayer.Initialize();
 		}
 
 		public void Initialize()
@@ -59,7 +48,7 @@ namespace MergeTest.Units
 				if (i == Level - 1)
 				{
 					costume.TryEnable();
-					_animator.ChangeAvatar(costume.Avatar);
+					_animator.SetAnimator(costume.Animator);
 				}
 				else
 				{
@@ -78,16 +67,17 @@ namespace MergeTest.Units
 		public void LevelUp()
 		{
 			Level++;
+			_visualEffectsPlayer.PlayLevelUp(transform.position + Vector3.up);
 			UpdateCostume();
 		}
 		
-		public void Take()
+		public void Select()
 		{
 			_animator.PlayIdleAnim();
 			transform.localScale *= _takeScaleMultiplier;
 		}
 
-		public void Release()
+		public void UnSelect()
 		{
 			_animator.StopIdleAnim();
 			transform.localScale = _defaultScale;

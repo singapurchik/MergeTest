@@ -10,7 +10,6 @@ namespace MergeTest.Core
 
 		public bool IsInputProcess { get; private set; }
 		
-		public event Action<RaycastHit> OnSelected;
 		public event Action OnInputFinished;
 		public event Action OnInputStarted;
 
@@ -20,11 +19,6 @@ namespace MergeTest.Core
 			{
 				IsInputProcess = true;
 				OnInputStarted?.Invoke();
-				
-				var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-				
-				if (Physics.Raycast(ray, out var hit))
-					OnSelected?.Invoke(hit);
 			}
 
 			if (Input.GetMouseButtonUp(0))

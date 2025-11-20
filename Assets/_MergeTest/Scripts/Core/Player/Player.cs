@@ -1,25 +1,9 @@
-using System;
 using UnityEngine;
 
 namespace MergeTest.Core
 {
-	public class Player : MonoBehaviour, IObjectHolder
+	public class Player : MonoBehaviour
 	{
-		private IHoldableObject _currentHoldable;
-		
-		public void Take(IHoldableObject holdableObject)
-		{
-			_currentHoldable = holdableObject;
-		}
 
-		public void Release()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		private void Update()
-		{
-			if ()
-		}
 	}
 }

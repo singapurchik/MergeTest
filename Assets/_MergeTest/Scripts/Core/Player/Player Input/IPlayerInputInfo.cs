@@ -1,4 +1,3 @@
-using UnityEngine;
 using System;
 
 namespace MergeTest.Core
@@ -7,7 +6,6 @@ namespace MergeTest.Core
 	{
 		public bool IsInputProcess { get; }
 		
-		public event Action<RaycastHit> OnSelected;
 		public event Action OnInputFinished;
 		public event Action OnInputStarted;
 	}

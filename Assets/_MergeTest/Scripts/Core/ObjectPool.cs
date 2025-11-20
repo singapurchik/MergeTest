@@ -90,6 +90,7 @@ namespace MergeTest.Core
 		}
 
 		protected abstract void InitializeObject(T obj);
+		
 		protected abstract void CleanupObject(T obj);
 
 #if UNITY_EDITOR

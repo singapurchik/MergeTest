@@ -7,28 +7,50 @@ namespace MergeTest.Units
 {
 	public class Unit : MonoBehaviour, IUnit
 	{
-		[SerializeField] private List<GameObject> _bodies = new ();
+		[SerializeField] private UnitType _type;
+		[SerializeField] private List<GameObject> _skins = new ();
 
-		private int _currentLevel;
+		public UnitType Type => _type;
 		
 		public string Id { get; private set; }
-		
-		public event Action<Unit> OnMerged;
+
+		public int Level { get; private set; } = 1;
+		public int MaxLevel => _skins.Count;
+
+		public event Action<Unit> OnDestroyed;
 
 		public void Initialize()
 		{
 			Id = Guid.NewGuid().ToString();
-			
-			_currentLevel = 0;
-			
-			for (int i = 0; i < _bodies.Count; i++)
+			Level = 1;
+			UpdateSkin();
+		}
+
+		private void UpdateSkin()
+		{
+			for (int i = 0; i < _skins.Count; i++)
 			{
-				if (i == _currentLevel)
-					_bodies[i].TryEnable();
+				if (i == Level - 1)
+					_skins[i].TryEnable();
 				else
-					_bodies[i].TryDisable();
+					_skins[i].TryDisable();
 			}
 		}
+		
+		public void SetParent(Transform parent)
+		{
+			transform.SetParent(parent, false);
+			transform.localPosition = Vector3.zero;
+			transform.localRotation = Quaternion.identity;
+		}
+
+		public void LevelUp()
+		{
+			Level++;
+			UpdateSkin();
+		}
+
+		public void DestroyUnit() => OnDestroyed?.Invoke(this);
 
 		public void Take()
 		{

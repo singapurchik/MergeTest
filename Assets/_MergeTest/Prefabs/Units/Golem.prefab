@@ -77,9 +77,29 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2133542150315177425, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
+      propertyPath: _type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133542150315177425, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
+      propertyPath: _skins.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133542150315177425, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
       propertyPath: _bodies.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2133542150315177425, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
+      propertyPath: '_skins.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4779612826037301828}
+    - target: {fileID: 2133542150315177425, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
+      propertyPath: '_skins.Array.data[1]'
+      value: 
+      objectReference: {fileID: 3335179140367256628}
+    - target: {fileID: 2133542150315177425, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
+      propertyPath: '_skins.Array.data[2]'
+      value: 
+      objectReference: {fileID: 3182394411942478476}
     - target: {fileID: 2133542150315177425, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
       propertyPath: '_bodies.Array.data[0]'
       value: 

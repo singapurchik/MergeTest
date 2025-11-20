@@ -12,6 +12,7 @@ namespace MergeTest.Units
 		[SerializeField] private float _spawnInterval = 3;
 
 		[Inject] private IReadOnlyList<UnitsPool> _charactersPools;
+		[Inject] private IUnitsGridRegister _gridRegister;
 		[Inject] private IUnitsGridInfo _gridInfo;
 
 		private float _nextSpawnTime;
@@ -24,19 +25,21 @@ namespace MergeTest.Units
 			_activateTime = Time.timeSinceLevelLoad + _startDelay;
 		}
 
-		private void Spawn(Transform parent)
+		private void Spawn(IUnitsGridCell cell)
 		{
-			var character = _charactersPools[Random.Range(0, _charactersPools.Count)].Get();
-			character.transform.SetParent(parent,false);
+			var unit = _charactersPools[Random.Range(0, _charactersPools.Count)].Get();
+			unit.SetParent(cell.SpawnPoint);
+			_gridRegister.AddUnitToCell(cell, unit.Id);
+			cell.SetFull();
 		}
 		
 		private void Update()
 		{
 			if (_isActive)
 			{
-				if (Time.timeSinceLevelLoad > _nextSpawnTime && _gridInfo.TryGetEmptyTilePoint(out var tile))
+				if (Time.timeSinceLevelLoad > _nextSpawnTime && _gridInfo.TryGetEmptyCell(out var cell))
 				{
-					Spawn(tile);
+					Spawn(cell);
 					_nextSpawnTime = Time.timeSinceLevelLoad + _spawnInterval;
 				}
 			}

@@ -15,12 +15,12 @@ namespace MergeTest.Units
 
 		public override void InstallBindings()
 		{
-			var register = new UnitsGridRegister();
 			var unitsHolder = new UnitsHolder();
 			
 			Container.Bind<IReadOnlyUnitsHolder>().FromInstance(unitsHolder).AsSingle();
 			
-			Container.BindInstance(register).WhenInjectedIntoInstance(_manipulator);
+			Container.Bind<IUnitsGridRegister>().FromInstance(_grid).WhenInjectedIntoInstance(_unitsSpawner);
+			Container.Bind<IUnitsGridRegister>().FromInstance(_grid).WhenInjectedIntoInstance(_manipulator);
 			Container.BindInstance(unitsHolder).WhenInjectedInto<UnitsPool>();
 			
 			Container.Bind<IReadOnlyList<UnitsPool>>().FromInstance(_pools)

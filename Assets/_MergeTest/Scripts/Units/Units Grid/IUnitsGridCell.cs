@@ -1,9 +1,15 @@
+using UnityEngine;
+
 namespace MergeTest.Units.Grid
 {
 	public interface IUnitsGridCell
 	{
-		public bool IsEmpty { get; }
+		public Transform SpawnPoint { get; }
 		
-		public void AddUnit(string unitId);
+		public bool IsEmpty { get; }
+
+		public void SetFull();
+
+		public void SetEmpty();
 	}
 }

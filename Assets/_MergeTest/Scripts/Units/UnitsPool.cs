@@ -9,7 +9,7 @@ namespace MergeTest.Units
 		
 		protected override void InitializeObject(Unit unit)
 		{
-			unit.OnMerged += ReturnToPool;
+			unit.OnDestroyed += ReturnToPool;
 			unit.Initialize();
 			_unitsHolder.Add(unit);
 		}
@@ -17,7 +17,7 @@ namespace MergeTest.Units
 		protected override void CleanupObject(Unit unit)
 		{
 			_unitsHolder.Remove(unit);
-			unit.OnMerged -= ReturnToPool;
+			unit.OnDestroyed -= ReturnToPool;
 		}
 	}
 }

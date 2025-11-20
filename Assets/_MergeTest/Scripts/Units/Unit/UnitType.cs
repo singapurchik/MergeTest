@@ -2,7 +2,7 @@ namespace MergeTest.Units
 {
 	public enum UnitType
 	{
-		Golem = 1,
-		Tampora = 2,
+		Warrior = 1,
+		Ram = 2,
 	}
 }

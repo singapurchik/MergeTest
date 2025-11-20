@@ -73,16 +73,20 @@ namespace MergeTest.Units
 		
 		public void Select()
 		{
-			_animator.PlayIdleAnim();
+			_animator.PlayMoveAnim();
 			transform.localScale *= _takeScaleMultiplier;
 		}
 
 		public void UnSelect()
 		{
-			_animator.StopIdleAnim();
+			_animator.StopMoveAnim();
 			transform.localScale = _defaultScale;
 		}
 		
-		public void DestroyUnit() => OnDestroyed?.Invoke(this);
+		public void DestroyUnit()
+		{
+			UnSelect();
+			OnDestroyed?.Invoke(this);
+		}
 	}
 }

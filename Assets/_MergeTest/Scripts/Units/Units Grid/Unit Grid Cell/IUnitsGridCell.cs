@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MergeTest.Units.Grid
 {
-	public interface IUnitsGridCell
+	public interface IUnitsGridCell : IUnitGridCellInfo
 	{
 		public Transform SpawnPoint { get; }
 		

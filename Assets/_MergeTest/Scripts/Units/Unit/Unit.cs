@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using MergeTest.Core.Cameras;
 using UnityEngine;
 using Zenject;
 using System;
@@ -13,6 +14,7 @@ namespace MergeTest.Units
 		[Space(5)]
 		[SerializeField] private UnitVisualEffectsPlayer _visualEffectsPlayer;
 		
+		[Inject] private ICameraShaker _cameraShaker;
 		[Inject] private UnitAnimator _animator;
 		
 		public UnitType Type => _type;
@@ -68,6 +70,7 @@ namespace MergeTest.Units
 		{
 			Level++;
 			_visualEffectsPlayer.PlayLevelUp(transform.position + Vector3.up);
+			_cameraShaker.PlayerMergeUnitImpulse();
 			UpdateCostume();
 		}
 		

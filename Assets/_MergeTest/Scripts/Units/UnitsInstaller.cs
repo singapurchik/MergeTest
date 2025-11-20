@@ -17,21 +17,23 @@ namespace MergeTest.Units
 		public override void InstallBindings()
 		{
 			var unitsHolder = new UnitsHolder();
-			
 			Container.Bind<IReadOnlyUnitsHolder>().FromInstance(unitsHolder).AsSingle();
-
 			Container.Bind<IUnitsGridRegister>().FromInstance(_grid).AsSingle();
 			Container.BindInstance(unitsHolder).WhenInjectedInto<UnitsPool>();
-			
+
+			BindToSpawner();
+			BindUnitsLogic();
+		}
+
+		private void BindToSpawner()
+		{
 			Container.Bind<IReadOnlyList<UnitsPool>>().FromInstance(_pools)
 				.WhenInjectedIntoInstance(_unitsSpawner);
 
 			Container.Bind<IUnitsGridInfo>().FromInstance(_grid)
 				.WhenInjectedIntoInstance(_unitsSpawner);
-
-			BindUnitsLogic();
 		}
-
+		
 		private void BindUnitsLogic()
 		{
 			Container.Bind<SelectedUnitState>().AsSingle();

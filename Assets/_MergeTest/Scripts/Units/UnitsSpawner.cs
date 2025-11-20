@@ -1,8 +1,7 @@
-using System;
 using Random = UnityEngine.Random;
 using System.Collections.Generic;
-using MergeTest.Core;
 using MergeTest.Units.Grid;
+using MergeTest.Core;
 using UnityEngine;
 using Zenject;
 

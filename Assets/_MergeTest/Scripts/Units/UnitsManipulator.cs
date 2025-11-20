@@ -40,32 +40,32 @@ namespace MergeTest.Units
 
 		private void HandlePointerUp()
 		{
-			if (!_selectionState.HasSelection)
-				return;
-
-			var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-			IUnitsGridCell targetCell = null;
-
-			if (Physics.Raycast(ray, out var hit, _maxRayDistance) &&
-			    hit.transform.TryGetComponent(out IUnitsGridCell cell))
+			if (_selectionState.HasSelection)
 			{
-				targetCell = cell;
-			}
+				var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+				IUnitsGridCell targetCell = null;
 
-			_gridPlacement.TryPlaceSelectedUnit(targetCell);
+				if (Physics.Raycast(ray, out var hit, _maxRayDistance) &&
+				    hit.transform.TryGetComponent(out IUnitsGridCell cell))
+				{
+					targetCell = cell;
+				}
+
+				_gridPlacement.TryPlaceSelectedUnit(targetCell);	
+			}
 		}
 
 		private void Update()
 		{
-			if (!_inputInfo.IsInputProcess || !_selectionState.HasSelection)
-				return;
+			if (_inputInfo.IsInputProcess && _selectionState.HasSelection)
+			{
+				var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
 
-			var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+				if (!Physics.Raycast(ray, out var hit, _maxRayDistance, _groundLayer))
+					return;
 
-			if (!Physics.Raycast(ray, out var hit, _maxRayDistance, _groundLayer))
-				return;
-
-			_groundMover.MoveSelectedUnit(hit.point, Time.deltaTime);
+				_groundMover.MoveSelectedUnit(hit.point, Time.deltaTime);	
+			}
 		}
 	}
 }

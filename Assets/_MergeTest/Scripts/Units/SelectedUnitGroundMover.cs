@@ -17,16 +17,16 @@ namespace MergeTest.Units
 
 		public void MoveSelectedUnit(Vector3 point, float deltaTime)
 		{
-			if (!_selectionState.HasSelection)
-				return;
+			if (_selectionState.HasSelection)
+			{
+				var unit = _selectionState.Unit;
+				var current = unit.transform.position;
 
-			var unit = _selectionState.Unit;
-			var current = unit.transform.position;
+				var target = point;
+				target.y = _selectionState.Cell.SpawnPoint.position.y + HORIZONTAL_OFFSET;
 
-			var target = point;
-			target.y = _selectionState.Cell.SpawnPoint.position.y + HORIZONTAL_OFFSET;
-
-			unit.transform.position = Vector3.Lerp(current, target, _moveSpeed * deltaTime);
+				unit.transform.position = Vector3.Lerp(current, target, _moveSpeed * deltaTime);	
+			}
 		}
 	}
 }

@@ -18,20 +18,14 @@ namespace MergeTest.Units.Grid
 
 		public void TrySelectUnit(RaycastHit hit)
 		{
-			if (!hit.transform.TryGetComponent(out IUnitsGridCell cell))
-				return;
-
-			if (cell.IsEmpty)
-				return;
-
-			if (!_unitsGridRegister.TryGetUnitIdFromCell(cell, out var unitId))
-				return;
-
-			if (!_unitsHolder.Units.TryGetValue(unitId, out var unit))
-				return;
-
-			_selectionState.Set(unit, cell);
-			unit.Select();
+			if (hit.transform.TryGetComponent(out IUnitsGridCell cell) && !cell.IsEmpty &&
+			    _unitsGridRegister.TryGetUnitIdFromCell(cell, out var unitId) &&
+					_unitsHolder.Units.TryGetValue(unitId, out var unit))
+			{
+				_selectionState.Set(unit, cell);
+				unit.Select();
+			}
 		}
+
 	}
 }

@@ -89,7 +89,7 @@ namespace MergeTest.Units
 		{
 			_selectedUnit.DestroyUnit();
 			_selectedUnit = null;
-			_unitsGridRegister.TryRemoveUnitFromCell(_selectedCell);
+			_unitsGridRegister.RemoveUnitFromCell(_selectedCell);
 			_selectedCell.SetEmpty();
 			_selectedCell = null;
 		}
@@ -97,7 +97,7 @@ namespace MergeTest.Units
 		private void SetUnitToNewCell(IUnitsGridCell cell)
 		{
 			_selectedCell.SetEmpty();
-			_unitsGridRegister.TryRemoveUnitFromCell(_selectedCell);
+			_unitsGridRegister.RemoveUnitFromCell(_selectedCell);
 			_selectedCell = null;
 						
 			cell.SetFull();

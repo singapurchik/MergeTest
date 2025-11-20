@@ -7,6 +7,6 @@ namespace MergeTest.Units.Grid
 
 		public void AddUnitToCell(IUnitsGridCell cell, string unitId);
 		
-		public bool TryRemoveUnitFromCell(IUnitsGridCell cell);
+		public void RemoveUnitFromCell(IUnitsGridCell cell);
 	}
 }

@@ -89,6 +89,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2133542150315177425, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
+      propertyPath: _costumes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133542150315177425, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
       propertyPath: '_skins.Array.data[0]'
       value: 
       objectReference: {fileID: 4779612826037301828}
@@ -112,6 +116,30 @@ PrefabInstance:
       propertyPath: '_bodies.Array.data[2]'
       value: 
       objectReference: {fileID: 3182394411942478476}
+    - target: {fileID: 2133542150315177425, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
+      propertyPath: _costumes.Array.data[0]._skin
+      value: 
+      objectReference: {fileID: 4779612826037301828}
+    - target: {fileID: 2133542150315177425, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
+      propertyPath: _costumes.Array.data[1]._skin
+      value: 
+      objectReference: {fileID: 3335179140367256628}
+    - target: {fileID: 2133542150315177425, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
+      propertyPath: _costumes.Array.data[2]._skin
+      value: 
+      objectReference: {fileID: 3182394411942478476}
+    - target: {fileID: 2133542150315177425, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
+      propertyPath: _costumes.Array.data[0]._avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: b063ed0bdf1fcb64c8e88b8d7be8494f, type: 3}
+    - target: {fileID: 2133542150315177425, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
+      propertyPath: _costumes.Array.data[1]._avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: b063ed0bdf1fcb64c8e88b8d7be8494f, type: 3}
+    - target: {fileID: 2133542150315177425, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
+      propertyPath: _costumes.Array.data[2]._avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: b063ed0bdf1fcb64c8e88b8d7be8494f, type: 3}
     - target: {fileID: 5080014788809624683, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -153,9 +181,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7686782545599338873, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
-      propertyPath: m_Avatar
+      propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9000000, guid: b063ed0bdf1fcb64c8e88b8d7be8494f, type: 3}
+      objectReference: {fileID: 22100000, guid: bd13b667110248242b9df8423bbaed2c, type: 2}
     - target: {fileID: 8406456476355414069, guid: 23d1c40cc7d42074dbacd4851ac838ca, type: 3}
       propertyPath: m_Name
       value: Golem

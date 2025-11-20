@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5080014788809624683}
+  - component: {fileID: 2167579689233337769}
+  - component: {fileID: 8971307975122340739}
   - component: {fileID: 2133542150315177425}
   - component: {fileID: 7686782545599338873}
   m_Layer: 0
@@ -34,6 +36,38 @@ Transform:
   - {fileID: 984716699520673165}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2167579689233337769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406456476355414069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 8971307975122340739}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
+--- !u!114 &8971307975122340739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406456476355414069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25009a21b8244aff82e7e8255cb70c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 7686782545599338873}
+  _unit: {fileID: 2133542150315177425}
 --- !u!114 &2133542150315177425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,7 +80,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206c9fbef7eaa7d42aa3b946edf085cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bodies: []
+  _type: 0
+  _skins: []
+  _takeScaleMultiplier: 1.5
 --- !u!95 &7686782545599338873
 Animator:
   serializedVersion: 7
@@ -79,7 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 984716699520673165}
   m_Layer: 0
-  m_Name: Body
+  m_Name: Skins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

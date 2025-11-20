@@ -12,15 +12,15 @@ namespace MergeTest.Units
 		[SerializeField] private UnitsSpawner _unitsSpawner;
 		[SerializeField] private UnitsGrid _grid;
 		[SerializeField] private List<UnitsPool> _pools = new ();
+		[SerializeField] private float _unitMoveSpeed = 20f;
 
 		public override void InstallBindings()
 		{
 			var unitsHolder = new UnitsHolder();
 			
 			Container.Bind<IReadOnlyUnitsHolder>().FromInstance(unitsHolder).AsSingle();
-			
-			Container.Bind<IUnitsGridRegister>().FromInstance(_grid).WhenInjectedIntoInstance(_unitsSpawner);
-			Container.Bind<IUnitsGridRegister>().FromInstance(_grid).WhenInjectedIntoInstance(_manipulator);
+
+			Container.Bind<IUnitsGridRegister>().FromInstance(_grid).AsSingle();
 			Container.BindInstance(unitsHolder).WhenInjectedInto<UnitsPool>();
 			
 			Container.Bind<IReadOnlyList<UnitsPool>>().FromInstance(_pools)
@@ -28,6 +28,16 @@ namespace MergeTest.Units
 
 			Container.Bind<IUnitsGridInfo>().FromInstance(_grid)
 				.WhenInjectedIntoInstance(_unitsSpawner);
+
+			BindUnitsLogic();
+		}
+
+		private void BindUnitsLogic()
+		{
+			Container.Bind<SelectedUnitState>().AsSingle();
+			Container.Bind<UnitsGridSelection>().AsSingle();
+			Container.Bind<UnitsGridPlacement>().AsSingle();
+			Container.Bind<SelectedUnitGroundMover>().AsSingle().WithArguments(_unitMoveSpeed);
 		}
 
 #if UNITY_EDITOR

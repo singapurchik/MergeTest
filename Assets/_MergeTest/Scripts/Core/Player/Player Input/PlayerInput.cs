@@ -1,7 +1,7 @@
-using System;
-using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem;
+using UnityEngine;
+using System;
 
 namespace MergeTest.Core
 {
@@ -13,12 +13,21 @@ namespace MergeTest.Core
 		public event Action OnInputFinished;
 		public event Action OnInputStarted;
 
+		private void GetPointerInput(out Vector2 position, out ButtonControl button)
+		{
+#if UNITY_EDITOR
+			button = Mouse.current.leftButton;
+			position = Mouse.current.position.ReadValue();
+#elif UNITY_ANDROID ||  UNITY_IOS
+			var touch = Touchscreen.current.primaryTouch;
+			button = touch.press;
+			position = touch.position.ReadValue();
+#endif
+		}
+		
 		private void Update()
 		{
 			GetPointerInput(out var position, out var button);
-
-			if (button == null)
-				return;
 
 			PointerScreenPosition = position;
 
@@ -33,18 +42,6 @@ namespace MergeTest.Core
 				IsInputProcess = false;
 				OnInputFinished?.Invoke();
 			}
-		}
-
-		private void GetPointerInput(out Vector2 position, out ButtonControl button)
-		{
-#if UNITY_EDITOR
-			button = Mouse.current.leftButton;
-			position = Mouse.current.position.ReadValue();
-#elif UNITY_ANDROID ||  UNITY_IOS
-				var touch = Touchscreen.current.primaryTouch;
-				button = touch.press;
-				position = touch.position.ReadValue();
-#endif
 		}
 	}
 }

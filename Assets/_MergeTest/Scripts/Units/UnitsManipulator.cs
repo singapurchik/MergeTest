@@ -32,7 +32,7 @@ namespace MergeTest.Units
 
 		private void HandlePointerDown()
 		{
-			var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+			var ray = _mainCamera.ScreenPointToRay(_inputInfo.PointerScreenPosition);
 
 			if (Physics.Raycast(ray, out var hit, _maxRayDistance))
 				_gridSelection.TrySelectUnit(hit);
@@ -42,7 +42,8 @@ namespace MergeTest.Units
 		{
 			if (_selectionState.HasSelection)
 			{
-				var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+				var ray = _mainCamera.ScreenPointToRay(_inputInfo.PointerScreenPosition);
+
 				IUnitsGridCell targetCell = null;
 
 				if (Physics.Raycast(ray, out var hit, _maxRayDistance) &&
@@ -59,7 +60,7 @@ namespace MergeTest.Units
 		{
 			if (_inputInfo.IsInputProcess && _selectionState.HasSelection)
 			{
-				var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+				var ray = _mainCamera.ScreenPointToRay(_inputInfo.PointerScreenPosition);
 
 				if (!Physics.Raycast(ray, out var hit, _maxRayDistance, _groundLayer))
 					return;

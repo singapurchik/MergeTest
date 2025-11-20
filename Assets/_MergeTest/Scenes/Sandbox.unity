@@ -1721,10 +1721,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2118887758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.20522222, y: 0.19420834}
-  m_AnchorMax: {x: 0.79829633, y: 0.31768757}
-  m_AnchoredPosition: {x: -2, y: -2.4997559}
-  m_SizeDelta: {x: 0, y: -1.8276062}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.286}
+  m_AnchoredPosition: {x: 0.099975586, y: 0.32714844}
+  m_SizeDelta: {x: -0.52, y: 0.65449905}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &723289828
 MonoBehaviour:
@@ -1773,7 +1773,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 124.45
+  m_fontSize: 127.25
   m_fontSizeBase: 118.4
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1781,7 +1781,7 @@ MonoBehaviour:
   m_fontSizeMax: 127.25
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2539,7 +2539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aae0684266649c793c59ee464917534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clickAction: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  _pressAction: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!4 &975637126
 Transform:
   m_ObjectHideFlags: 0
